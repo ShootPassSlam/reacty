@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app='AngularRealtime'>
+<head>
+	<title>Angular Realtime</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<script src="node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller='Main'>
+    <h1>Angular Realtime</h1>
+
+    <div ng-repeat="row in rows">
+        {{row.id}}
+    </div>
+</body>
+</html>
