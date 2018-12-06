@@ -1,16 +1,11 @@
 const express = require('express');
 const http = require('http');
-const url = require('url');
 const WebSocket = require('ws');
-const path = require('path');
 
 const NUM_ITEMS = 100;
-const MESSAGES_PER_SECOND = 100;
+const MESSAGES_PER_SECOND = 20;
 
 const app = express();
-
-app.use('/', express.static(path.join(__dirname, 'public')))
-app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
