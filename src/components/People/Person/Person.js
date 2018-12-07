@@ -1,28 +1,25 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 import styles from './Person.module.css';
 
 const person = (props) => {
-    
     return (
-        <Container className={styles.Person}>
-            <Row>
+            <Row className={[styles.Person, styles.NewListItem].join(" ")}>
                 <Col xs="6" sm="4">
-                    <p className={styles.Title}>Id:</p>
-                    <p>{props.id}</p>
+                    <p className={styles.Title}>Number:</p>
+                    <p className={styles.Body}>{props.number}</p>
                 </Col>
                 <Col xs="6" sm="4">
                     <p className={styles.Title}>Name:</p>
-                    <p>{props.name}</p>
+                    <p className={styles.Body}>{props.name}</p>
                 </Col>
                 <Col xs="6" sm="4">
-                    <p className={styles.Title}>Number:</p>
-                    <p>{props.number}</p>
+                    <p className={styles.Title}>Id:</p>
+                    <p className={styles.Body}>{props.id}</p>
                 </Col>
             </Row>
-        </Container>
     );
 }
 
-export default person;
+export default React.memo(person);

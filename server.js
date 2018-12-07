@@ -1,9 +1,22 @@
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
+const program = require('commander');
 
-const NUM_ITEMS = 100;
-const MESSAGES_PER_SECOND = 20;
+program
+    .version('0.1.0')
+    .option('-t, --thousand', 'One thousand records at one thousand a second')
+    .parse(process.argv);
+    
+if (program.thousand){
+    console.log("Will feed one thousand records at one thousand a second");
+    var NUM_ITEMS = 1000;
+    var MESSAGES_PER_SECOND = 1000;
+}else{
+    console.log("Will feed one hundred records at one hundred a second");
+    var NUM_ITEMS = 100;
+    var MESSAGES_PER_SECOND = 100;
+}
 
 const app = express();
 
@@ -31,7 +44,7 @@ function createRandomName() {
 
 wss.on('connection', function(ws) {
     var destroy;
-
+    
     ws.on('message', function(message) {
         if (message === 'init') {
             destroy = callHandlerEveryN(function() {

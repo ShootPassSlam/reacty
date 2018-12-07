@@ -4,20 +4,25 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.3",
+    "commander": "^2.19.0",
     "express": "^4.16.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
     "reactstrap": "^6.5.0",
+    "serve": "^10.1.1",
     "ws": "^6.1.2"
   },
   "scripts": {
-    "local": "concurrently --kill-others \"npm run start\" \"npm run user_generator_server\"",
+    "local": "concurrently --kill-others \"npm run start\" \"npm run user_generator_server_100\"",
+    "prod_local_100": "concurrently --kill-others \"serve -s build -l 3000\" \"npm run user_generator_server_100\"",
+    "prod_local_1000": "concurrently --kill-others \"serve -s build -l 3000\" \"npm run user_generator_server_1000\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "user_generator_server": "node server.js"
+    "user_generator_server_100": "node server.js",
+    "user_generator_server_1000": "node server.js -t"
   },
   "eslintConfig": {
     "extends": "react-app"

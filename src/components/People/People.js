@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Person from './Person/Person';
+import { Container } from 'reactstrap';
 
 const locationOf = (array, value) =>{
     if (array.length === 0){
@@ -10,7 +11,7 @@ const locationOf = (array, value) =>{
         high = array.length;
     while (low < high) {
         let mid = (low + high) >>> 1;
-        if (array[mid]["id"] < value) low = mid + 1;
+        if (array[mid]["number"] > value) low = mid + 1;
         else high = mid;
     }
     return low;
@@ -37,10 +38,10 @@ class people extends Component {
             }
             if (message) {
                 const people = [...this.state.people];
-                const location = locationOf(people, message.id);
-                if(!people[location] || people[location]["id"]!== message.id){
+                const location = locationOf(people, message.value);
+                if(!people[location] || people[location]["number"]!== message.value){
                     people.splice(location, 0, {id: message.id, name: message.name, number: message.value});
-                }else if(people[location]["id"]=== message.id){
+                }else if(people[location]["number"]=== message.value){
                     people.splice(location, 1, {id: message.id, name: message.name, number: message.value});
                 }
                 this.setState({people:people});
@@ -57,14 +58,18 @@ class people extends Component {
     }
 
     render(){
-        console.log("In the render:", this.state.people);
-        return this.state.people.map( person => {
-            return <Person
-                key = {person.id} 
-                id = {person.id} 
-                name = {person.name} 
-                number = {person.number}/>
-        })
+        // console.log("In the render:", this.state.people);
+        return (
+            <Container>{
+                this.state.people.map( person => {
+                    return <Person
+                        key = {person.number}
+                        number = {person.number}
+                        name = {person.name}
+                        id = {person.id}/>
+                })
+            }</Container>
+        )
     }
 }
 
