@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "user_generator_server_100": "node server.js",
+    "user_generator_server_100": "node ../websocket-server/server.js",
     "user_generator_server_1000": "node server.js -t"
   },
   "eslintConfig": {
