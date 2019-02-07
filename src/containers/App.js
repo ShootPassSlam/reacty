@@ -26,7 +26,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Topbar
-                    title = "Dominic Scotto Homework"
+                    title = "Websocket List"
                     buttonState = {this.state.showPeople}
                     clicked = {this.webSocketStreamToggle} />
                 {people}
