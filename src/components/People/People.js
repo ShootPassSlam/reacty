@@ -21,7 +21,7 @@ class people extends Component {
 
     state = {
         people: [],
-        endpoint: 'ws://localhost:7770'
+        endpoint: 'ws://mighty-shore-74194.herokuapp.com/'
     }
 
     componentDidMount(){
